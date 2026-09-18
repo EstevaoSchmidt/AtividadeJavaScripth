@@ -1,0 +1,1 @@
+O Java Script trás a possibilidade de utilizar itens mais complexos em paginas web, podendo implementar conteúdo que se atualiza com o tempo, mapas interativos ou gráficos 2d/3d animados.
