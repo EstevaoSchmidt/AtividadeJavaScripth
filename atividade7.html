@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <img id="personagem"  src="https://mystickermania.com/cdn/stickers/gravity-falls/gf-waddles-resting-512x512.png" alt="">
+
+    <p id="resposta"></p>
+
+    <button id="trocar">Trocar personagem</button>
+
+    <script>
+
+        const personagem = document.getElementById("personagem");
+        const resposta = document.getElementById("resposta");
+        const trocar = document.getElementById("trocar");
+
+        personagem.addEventListener("mouseenter", () => {
+            resposta.textContent = "Qual foi?";
+        });
+        
+        personagem.addEventListener("mouseleave", () => {
+            resposta.textContent = "Temos misterios para discutir";
+        });
+
+        personagem.addEventListener("mousemove", () => {
+            resposta.textContent = "Isso faz cocegas";
+        });
+
+        personagem.addEventListener("click", () => {
+            resposta.textContent = "Pare, isso incomoda";
+        });
+
+        let indice = 0;
+        
+        trocar.addEventListener("click", () => {
+
+            indice++;
+
+            if (indice > 1) {
+                indice = 0;
+            }
+
+            if (indice == 0) {
+
+                personagem.src = "https://mystickermania.com/cdn/stickers/gravity-falls/gf-waddles-resting-512x512.png";
+
+            } else if (indice == 1) {
+                personagem.src = "https://static.wikia.nocookie.net/love-exalted/images/1/15/Stanley_Pines.png/revision/latest?cb=20230624184433";
+            }
+            });
+
+    </script>
+</body>
+</html>

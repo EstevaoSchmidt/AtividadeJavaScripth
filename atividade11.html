@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+
+        form {
+            max-width: 400px;
+            margin: auto;
+        }
+
+        input:not([type="checkbox"]) {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+        }
+
+        button {
+            padding: 10px 15px;
+            margin-top: 10px;
+        }
+
+        #mensagem {
+            margin-top: 15px;
+        }
+
+    </style>
+</head>
+<body>
+    
+<form id="formulario">
+        <h1>Cadastro</h1>
+
+        <label>Nome:</label>
+        <input type="text" id="nome" placeholder="Digite seu nome">
+
+        <label>E-mail:</label>
+        <input type="text" id="email" placeholder="Digite seu e-mail">
+
+        <label>Senha:</label>
+        <input type="password" id="senha" placeholder="Digite sua senha">
+
+        <label>Confirmar senha:</label>
+        <input type="password" id="confirmarSenha" placeholder="Confirme sua senha">
+
+        <p>
+            <input type="checkbox" id="mostrarSenha">
+            <label>Mostrar senha</label>
+        </p>
+
+        <button type="submit">Cadastrar</button>
+
+        <p id="mensagem"></p>
+    </form>
+
+    <script>
+        const formulario = document.getElementById("formulario");
+        const nome = document.getElementById("nome");
+        const email = document.getElementById("email");
+        const senha = document.getElementById("senha");
+        const confirmarSenha = document.getElementById("confirmarSenha");
+        const mostrarSenha = document.getElementById("mostrarSenha");
+        const mensagem = document.getElementById("mensagem");
+
+        const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+        const senhaRegex = /^(?=.*[A-Z])(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/;
+
+        formulario.addEventListener("submit", () => {
+
+            event.preventDefault();
+
+            if (nome.value.length < 3) {
+
+                mensagem.textContent = "O nome deve possuir pelo menos 3 caracteres.";
+                return;
+
+            }
+            if (!emailRegex.test(email.value)) {
+
+                mensagem.textContent = "Digite um e-mail válido.";
+                return;
+            }
+
+            if (!senhaRegex.test(senha.value)) {
+
+                mensagem.textContent = "A senha deve ter pelo menos 8 caracteres, um número uma letra maiuscula e um caracter especial.";
+                return;
+
+            }
+
+            if (senha.value !== confirmarSenha.value) {
+
+                mensagem.textContent = "As senhas não são iguais.";
+                return;
+
+            }
+
+            mensagem.textContent = "Cadastro realizado com sucesso!";
+
+        });
+
+        mostrarSenha.addEventListener("change", () => {
+
+            if (mostrarSenha.checked) {
+
+                senha.type = "text";
+                confirmarSenha.type = "text";
+
+            } else {
+
+                senha.type = "password";
+                confirmarSenha.type = "password";
+
+            }
+        });
+        
+    </script>
+
+
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <button id="gerar">Gerar Nova Aventura</button>
+
+    <p id="aventura">Clique no botão para gerar uma aventura!</p>
+
+    <script>
+
+        const acoes = [
+            "A Busca",
+            "A Batalha",
+            "O Resgate"
+        ];
+
+        const locais = [
+            "na Floresta Sombria",
+            "no Reino Perdido",
+            "na Montanha Misteriosa"
+        ];
+
+        const complementos = [
+            "do Dragão",
+            "do Tesouro Esquecido",
+            "da Espada Ancestral"
+        ];
+
+        const aventura = document.getElementById("aventura");
+        const botao = document.getElementById("gerar");
+
+        botao.addEventListener("click", () => {
+
+            const acao = acoes[Math.floor(Math.random() * acoes.length)];
+
+            const local = locais[Math.floor(Math.random() * locais.length)];
+
+            const complemento = complementos[ Math.floor(Math.random() * complementos.length)];
+
+            aventura.textContent = acao + " " + local + " " + complemento;
+
+        });
+        
+    </script>
+
+</body>
+</html>
